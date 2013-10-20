@@ -1,4 +1,4 @@
 Backbonejs example
 =========
 
-Sample backbonejs example - Coming very soon.
+A Simple backbonejs example
