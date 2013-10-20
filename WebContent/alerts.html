@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Alerts with MVC and JSON</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="s.css">
+</head>
+<body>
+<div style="margin-left:200px;">
+<table><tr><td colspan=3>
+<div class="topbar" >topbar
+</div></td></tr>
+<tr><td rowspan=2>
+<div class="leftbar">
+leftbar
+</div></td><td>
+<div class="alerts criticalalertssection">  <div class="container">
+    <hr />
+	<div><a href="javascript://" class="criticaltoggle">+</a><span>Critical alerts: Immediate action required </span>
+	<a class="criticalalertslink" href="#"></a>&nbsp;&nbsp;&nbsp;<a class="lesscriticalalertslink" href="#"></a>
+		<div class="criticalalerts"></div>
+    
+
+  </div></div>
+</td><td><div class="rightbanner">rightbanner</div></td></tr>
+<tr><td colspan=2><div class="news">news</div></td>
+<tr>
+<tr><td colspan=3><div class="footer">footer</div></td></tr>
+</table>
+</div>
+ <script type="text/template" id="criticalAlerts-list-template">
+    <hr />
+    <table class="table striped">
+      <thead>
+        <tr>
+          <th></th><th>Due date</th><th>Customer</th><th>Reason</th><th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% _.each(criticalAlerts, function(alert) { %>
+          <tr>
+			<td><a class="btn info<%=alert.get('id')%>" href="#moreinfo/<%=alert.get('id')%>" >info</a></td>
+            <td><%= htmlEncode(alert.get('duedate')) %></td>
+            <td><%= htmlEncode(alert.get('customer')) %></td>
+            <td><%= htmlEncode(alert.get('reason')) %></td>
+            
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </script>
+
+  <script type="text/template" id="alert-actions-template">
+	alertactioninfo 
+	<a style="float: right;" href="javascript://" id="<%= htmlEncode(alertactioninfo.get('id')) %>" class="closehover" >close</a>
+	<table>
+	<tr><td>email : </td><td><%= htmlEncode(alertactioninfo.get('mobile')) %></td> </tr>
+	<tr><td>home : </td><td><%= htmlEncode(alertactioninfo.get('customer')) %></td> </tr>
+	<tr><td>mobile : </td><td><%= htmlEncode(alertactioninfo.get('home')) %></td> </tr>
+	<tr><td>account : </td><td><%= htmlEncode(alertactioninfo.get('account')) %></td> </tr>
+	</table>
+	
+  </script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js" type="text/javascript"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+  <script src="js/alerts_backbonejs.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+</body>
+</html> 
